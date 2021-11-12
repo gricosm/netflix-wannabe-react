@@ -31,9 +31,9 @@ module.exports.searchUser = async (req, res) => {
 module.exports.login = async (req, res) => {
   try {
     const checkMail = await userData.findOne({ email: req.body.email })
-    const checkPassword = method.compareHash(req.body.contrasenia, checkMail.contrasenia)
+    const checkPassword = method.compareHash(req.body.password, checkMail.password)
     if (checkMail === null || !checkPassword) {
-      res.send({ mensaje: 'Error, tu email o conrtraseña son incorrectos,vete a la mierda.' })
+      res.send({ mensaje: '¡Error! Tu email o contraseña son incorrectos.' })
     } else { res.json({ data: method.createToken(checkMail) }) }
   } catch (error) { res.send({ mensaje: 'Tus datos son incorrectos: ${error}.' }) }
 }
@@ -42,8 +42,8 @@ module.exports.login = async (req, res) => {
 
 module.exports.changeName = async (req, res) => {
   try {
-    await userData.findOneAndUpdate({ _id: req.params.id }, { nombre: req.body.nombre })
-    res.send('El nombre se ha cambiado perfectamente por: ' + req.body.nombre)
+    await userData.findOneAndUpdate({ _id: req.params.id }, { name: req.body.name })
+    res.send('El nombre se ha cambiado perfectamente por: ' + req.body.name)
   } catch (error) { res.send({ mensaje: 'Lo siento ha ocurrido un error de ${error}.' }) }
 }
 
@@ -51,5 +51,5 @@ module.exports.changeName = async (req, res) => {
 
 module.exports.deleteUser = async (req, res) => {
   const eliminate = await userData.findOneAndDelete({ _id: req.params.id })
-  res.json({ data: eliminate.nombre })
+  res.json({ data: eliminate.name })
 }

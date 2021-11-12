@@ -14,18 +14,24 @@ module.exports.searchMovie = async (req, res) => {
         res.json({ data: allMovies })
     }
 }
+
 //busqueda por id
+
 module.exports.searchMovie = async (req, res) => {
     const reqMovie = await dataMovie.find({_id:req.params.id })
     res.json({ data: reqMovie })
 }
+
 // añadir movies
+
 module.exports.addMovie = async (req, res) => {
     const movie = new dataMovie(req.body)
     await movie.save()
     res.json({ data: movie })
 }
+
 //deleteMovie movies
+
 module.exports.deleteMovie = async (req, res) => {
     const deleteMovie = await dataMovie.findOneAndDelete({_id:req.params.id})
     res.json({data:deleteMovie.title})
