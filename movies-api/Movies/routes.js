@@ -1,5 +1,6 @@
 const router = require('express').Router() 
 const controller = require('./controller')
+
 const validationJwt = require('../middleware')
 
 router.post('/', validationJwt.verifyToken, controller.addMovie )
@@ -8,3 +9,4 @@ router.get('/',  controller.searchMovie ) // buscar pelicula mediante un id (pos
 router.delete('/:id', controller.deleteMovie)
 
 module.exports = router;
+
