@@ -31,7 +31,7 @@ module.exports.searchUser = async (req, res) => {
 module.exports.login = async (req, res) => {
   try {
     const checkMail = await userData.findOne({ email: req.body.email })
-    const checkPassword = method.compareHash(req.body.password, checkMail.password)
+    const checkPassword = method.compareHash(req.body.checkPassword, checkMail.checkPassword)
     if (checkMail === null || !checkPassword) {
       res.send({ mensaje: '¡Error! Tu email o contraseña son incorrectos.' })
     } else { res.json({ data: method.createToken(checkMail) }) }
