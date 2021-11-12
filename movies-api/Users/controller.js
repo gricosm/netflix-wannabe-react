@@ -35,11 +35,11 @@ module.exports.login = async (req, res) => {
     if (checkMail === null || !checkPassword) {
       res.send({ mensaje: 'Error, tu email o conrtraseña son incorrectos,vete a la mierda.' })
     } else { res.json({ data: method.createToken(checkMail) }) }
-  } catch (error) {
-    res.send({ mensaje: 'Tus datos son incorrectos: ${error}.' })
-  }
+  } catch (error) { res.send({ mensaje: 'Tus datos son incorrectos: ${error}.' }) }
 }
-//cambiar usurario
+
+// Cambiar usuario.
+
 module.exports.changeName = async (req, res) => {
   try {
     await userData.findOneAndUpdate({ _id: req.params.id }, { nombre: req.body.nombre })

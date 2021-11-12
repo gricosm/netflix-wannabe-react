@@ -1,5 +1,6 @@
 const hash = require('./functions')
 const mongoose = require('mongoose');
+
 const userSchema = new mongoose.Schema({
     name:{ type: String, required: true, trim: true, },
     lastName:{ type: String, required: true },
@@ -19,7 +20,6 @@ const userSchema = new mongoose.Schema({
         // minlength: 8, // colocar en el controlador
         set:hash.createHash
     },
-
 }) 
 
 module.exports = mongoose.model('User', userSchema)

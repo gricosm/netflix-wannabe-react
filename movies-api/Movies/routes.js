@@ -1,9 +1,10 @@
 const router = require('express').Router() 
-const controlador = require('./controller')
-const validacionJwt=require('../middelware')
+const controller = require('./controller')
+const validationJwt = require('../middleware')
 
-router.post('/', validacionJwt.verificarToken, controlador.añadir )
-router.get('/:id', validacionJwt.verificarToken, controlador.buscarPelicula) // buscar pelicula mediante un id (posición del array) vamos a utilizar query params para 
-router.get('/',  controlador.buscarPeliculas ) // buscar pelicula mediante un id (posición del array) vamos a utilizar query params para 
-router.delete('/eliminar/:id', controlador.eliminarPelicula)
-module.exports=router;
+router.post('/', validationJwt.verifyToken, controller.addMovie )
+router.get('/:id', validationJwt.verifyToken, controller.searchMovieById) // buscar pelicula mediante un id (posición del array) vamos a utilizar query params para 
+router.get('/',  controller.searchMovie ) // buscar pelicula mediante un id (posición del array) vamos a utilizar query params para 
+router.delete('/:id', controller.deleteMovie)
+
+module.exports = router;
