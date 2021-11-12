@@ -1,6 +1,7 @@
 const dataMovie = require('./model.js')
 
-//busqueda de movies
+// Búsqueda de película.
+
 module.exports.searchMovie = async (req, res) => {
     if (req.query) {
         const param = {}
@@ -15,14 +16,14 @@ module.exports.searchMovie = async (req, res) => {
     }
 }
 
-//busqueda por id
+// Búsqueda de película por ID.
 
 module.exports.searchMovie = async (req, res) => {
     const reqMovie = await dataMovie.find({_id:req.params.id })
     res.json({ data: reqMovie })
 }
 
-// añadir movies
+// Añadir película.
 
 module.exports.addMovie = async (req, res) => {
     const movie = new dataMovie(req.body)
@@ -30,7 +31,7 @@ module.exports.addMovie = async (req, res) => {
     res.json({ data: movie })
 }
 
-//deleteMovie movies
+// Borrar película por ID.
 
 module.exports.deleteMovie = async (req, res) => {
     const deleteMovie = await dataMovie.findOneAndDelete({_id:req.params.id})
