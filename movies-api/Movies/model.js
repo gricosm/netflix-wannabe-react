@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const EsquemaPelicula= new mongoose.Schema({
-    titulo:{type:String, require},
+const MovieSchema= new mongoose.Schema({
+    title:{type:String, require},
     director:[{type:String}],
-    genero:[{type:String}],
-    duracion:{type:Number},
-    actores:[{type:String},{type:String},{type:String}],
+    genre:[{type:String}],
+    duration:{type:Number},
+    actors:[{type:String},{type:String},{type:String}],
 })
-module.exports=mongoose.model('Movies', EsquemaPelicula)
+module.exports=mongoose.model('Movies', MovieSchema)
