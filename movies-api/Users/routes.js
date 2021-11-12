@@ -9,5 +9,5 @@ router.get('/:id',  controlador.buscarUsuarios ) // buscar pelicula mediante un 
 router.put('/modificar/:id', controlador.cambiarNombre)
 router.delete('/eliminar',  controlador.eliminarUsuario)
 
-module.exports=router;
+module.exports = router;
 
