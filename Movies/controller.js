@@ -18,7 +18,7 @@ module.exports.searchMovie = async (req, res) => {
 
 // Búsqueda de película por ID.
 
-module.exports.searchMovie = async (req, res) => {
+module.exports.searchMovieById = async (req, res) => {
     const reqMovie = await dataMovie.find({_id:req.params.id })
     res.json({ data: reqMovie })
 }
