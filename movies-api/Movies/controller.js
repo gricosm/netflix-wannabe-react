@@ -1,40 +1,34 @@
-const dataMovie = require('./model.js')
+const dataFilms = require('./model.js')
 
 //busqueda de movies
 module.exports.searchMovie = async (req, res) => {
     if (req.query) {
         const param = {}
-        if (req.query.title) param.title = req.query.title
-        if (req.query.genre) param.genre = req.query.genre
-        if (req.query.actors) param.actors = req.query.actors
-        const filter = await dataMovie.find(param);
+        if (req.query.titulo) param.titulo = req.query.title
+        if (req.query.genero) param.genero = req.query.genre
+        if (req.query.actores) param.actores = req.query.actor
+        const filter = await dataFilms.find(param);
         res.json({ data: filter })
     } else {
-        const allMovies = await dataMovie.find()
+        const allMovies = await dataFilms.find()
         res.json({ data: allMovies })
     }
 }
-
 //busqueda por id
-
 module.exports.searchMovieById = async (req, res) => {
-    const reqMovie = await dataMovie.find({_id:req.params.id })
+    const reqMovie = await dataFilms.find({_id:req.params.id })
     res.json({ data: reqMovie })
 }
-
 // añadir movies
-
 module.exports.addMovie = async (req, res) => {
-    const movie = new dataMovie(req.body)
+    const movie = new dataFilms(req.body)
     await movie.save()
     res.json({ data: movie })
 }
-
-//deleteMovie movies
-
+//deleteMovies movies
 module.exports.deleteMovie = async (req, res) => {
-    const deleteMovie = await dataMovie.findOneAndDelete({_id:req.params.id})
-    res.json({data:deleteMovie.title})
+    const deleteMovies = await dataFilms.findOneAndDelete({_id:req.params.id})
+    res.json({data:deleteMovies.titulo})
 }
 
 
