@@ -1,15 +1,15 @@
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken")
-const moment = require("moment")
+
 
 module.exports.createHash = (password) => {
     let encrypted = bcrypt.hashSync(password, 10)
     return encrypted
 }
-module.exports.compareHash = (passwordPlane, contrasenidb) => {
+module.exports.compareHash = (passwordPlane, userPass) => {
 
-    let comparacion = bcrypt.compareSync(passwordPlane, contrasenidb)
-    return comparacion
+    let comparation = bcrypt.compareSync(passwordPlane, userPass)
+    return comparation
 }
 module.exports.createToken = (user) => {
     const payload = {
