@@ -1,0 +1,1 @@
+const rentData = require('./model.js')
