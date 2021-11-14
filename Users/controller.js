@@ -30,9 +30,10 @@ module.exports.login = async (req, res) => {
   try {
     const checkMail = await userData.findOne({ email: req.body.email })
     const checkPassword = method.compareHash(req.body.password, checkMail.password)
-    if (checkMail === null || !checkPassword) {
-      res.send({ mensaje: '¡Error! Tu email o contraseña son incorrectos.' })
-    } else { res.json({ data: method.createToken(checkMail) }) }
+    if (checkPassword) {
+      const data = method.createToken(checkMail)
+      res.json({ data: data })
+    } else { res.send({ mensaje: '¡Error! Tu email o contraseña son incorrectos.' }) }
   } catch (error) { res.send({ mensaje: 'Tus datos son incorrectos: ${error}.' }) }
 }
 
