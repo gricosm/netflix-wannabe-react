@@ -1,21 +1,19 @@
 const userData = require('./model.js')
 const method = require('./functions')
 
-// Creamos usuario.
+// Creamos user.
 
 module.exports.createUser = async (req, res) => {
-
   try {
-    const userUp = new userData(req.body)
-    userUp.rol = 'usuario'
-    await userUp.save()
-    res.json({ Mensaje: 'Enhorabuena, ya estás registrado.' })
+    const newUser = req.body;
+    await userData.create(newUser)
+    res.status(200).json({ user: newUser }); 
   } catch (error) {
-    res.send({ Mensaje: 'Lo siento ha ocurrido un error de ${error}.'})
+    res.status(400).json({error:"400"});
   }
 }
 
-// Buscamos usuario.
+// Buscamos user.
 
 module.exports.searchUser = async (req, res) => {
   try {
@@ -26,19 +24,19 @@ module.exports.searchUser = async (req, res) => {
   }
 }
 
-// Login usuario.
+// Login user.
 
 module.exports.login = async (req, res) => {
   try {
     const checkMail = await userData.findOne({ email: req.body.email })
-    const checkPassword = method.compareHash(req.body.checkPassword, checkMail.checkPassword)
+    const checkPassword = method.compareHash(req.body.password, checkMail.password)
     if (checkMail === null || !checkPassword) {
       res.send({ mensaje: '¡Error! Tu email o contraseña son incorrectos.' })
     } else { res.json({ data: method.createToken(checkMail) }) }
   } catch (error) { res.send({ mensaje: 'Tus datos son incorrectos: ${error}.' }) }
 }
 
-// Cambiar usuario.
+// Cambiar user.
 
 module.exports.changeName = async (req, res) => {
   try {
@@ -47,7 +45,7 @@ module.exports.changeName = async (req, res) => {
   } catch (error) { res.send({ mensaje: 'Lo siento ha ocurrido un error de ${error}.' }) }
 }
 
-// Eliminar usuario.
+// Eliminar user.
 
 module.exports.deleteUser = async (req, res) => {
   const eliminate = await userData.findOneAndDelete({ _id: req.params.id })
