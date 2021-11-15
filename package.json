@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Gustavo Sierra, Raúl Sánchez y Guillermo Rico (gricosm)",
+  "author": "Gustavo Sierra (gsierra10), Raúl Sánchez (RaulhSanchez) y Guillermo Rico (gricosm)",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
