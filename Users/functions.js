@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken")
-
+const moment = require("moment")
 
 module.exports.createHash = (password) => {
     let encrypted = bcrypt.hashSync(password, 10)
