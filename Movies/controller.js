@@ -26,9 +26,13 @@ module.exports.searchMovieById = async (req, res) => {
 // Añadir película.
 
 module.exports.addMovie = async (req, res) => {
-    const movie = new dataMovie(req.body)
-    await movie.save()
-    res.json({ data: movie })
+    try{
+        const newMovie = req.body;
+        await dataMovie.create(newMovie);
+        res.status(200).json({movie: newMovie})
+    }catch(error){
+        res.status(400).json({error:"400"})
+    }
 }
 
 // Borrar película por ID.
@@ -37,5 +41,6 @@ module.exports.deleteMovie = async (req, res) => {
     const deleteMovie = await dataMovie.findOneAndDelete({_id:req.params.id})
     res.json({data:deleteMovie.title})
 }
+
 
 
