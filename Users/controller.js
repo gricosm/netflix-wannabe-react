@@ -1,6 +1,7 @@
 const userData = require('./model.js')
 const method = require('./functions')
 
+
 // Creamos user.
 
 module.exports.createUser = async (req, res) => {
@@ -49,6 +50,9 @@ module.exports.changeName = async (req, res) => {
 // Eliminar user.
 
 module.exports.deleteUser = async (req, res) => {
-  const eliminate = await userData.findOneAndDelete({ _id: req.params.id })
+  try{
+    const eliminate = await userData.findOneAndDelete({ _id: req.params.id })
+  }catch{
   res.json({ data: eliminate.name })
+  }
 }
