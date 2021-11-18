@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-const MovieSchema= new mongoose.Schema({
+const MovieSchema= new Schema({
     title:{type:String, require},
     director:[{type:String}],
     genre:[{type:String}],

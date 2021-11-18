@@ -3,7 +3,7 @@ const controller = require('./controller')
 const validationJwt = require('../middleware')
 
 router.post ('/', controller.createRent)
-router.get ('/:id', controller.searchRent)
+router.get ('/', controller.searchRent)
 router.delete ('/', controller.deleteRent)
 
 module.exports = router;
