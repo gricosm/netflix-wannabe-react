@@ -1,6 +1,5 @@
 const router = require('express').Router() 
 const controller = require('./controller')
-
 const validationJwt = require('../middleware')
 
 
