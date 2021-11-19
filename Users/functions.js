@@ -14,8 +14,9 @@ module.exports.compareHash = (passwordPlane, userPass) => {
 module.exports.createToken = (user) => {
     const payload = {
         data: user._id,
+        role: user.role,
         iat: moment().unix(),
-        exp: moment().add(14, 'days').unix()
+        exp: moment().add(1, 'days').unix()
     }
     return jwt.sign(payload, process.env.PORT)
 }
