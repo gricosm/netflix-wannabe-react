@@ -55,10 +55,19 @@ la ruta que va a tener la URL, que en el caso de crear una compra será la sigui
 
 ![Image text](https://github.com/gricosm/netflix-wannabe-react/blob/1240e0c40b65e49765da9af7f4e41d0f0c439519/Router.png)
 
-Así obtendremos, en nuestras pruebas realizadas en Postman, con el servido local la siguiente respuesta que indica un ID 
-de la compra y dentro del objeto ambos ID añadidos y ya relacionados. 
+Así obtenemos, en nuestras pruebas realizadas en Postman, con el servidor local la siguiente respuesta que indica un ID 
+de la compra y dentro del objeto ambos ID añadidos y ya relacionados. Toda la información se almacena en la base de datos y con Robo 3T podemos ver así toda la información:
 
+![Image text](https://github.com/gricosm/netflix-wannabe-react/blob/2afbe7c889d484d1c21e5446ae82d71135618a2a/Captura%20de%20pantalla%202021-11-20%20a%20las%2017.20.54.png)
 
 De esta forma al buscar un usuario sus compras, nos muestra este objeto.
+
+![Image text](https://github.com/gricosm/netflix-wannabe-react/blob/2afbe7c889d484d1c21e5446ae82d71135618a2a/Captura%20de%20pantalla%202021-11-20%20a%20las%2017.21.13.png)
+
+Para que todo esto funcione y hacer segura la aplicación hemos encriptado la contraseña de usuario gracias a **Bcrypt**, herramienta que nos permite hasear la contraseña al registrarse el usuario. Al hacer un login, comparamos el hash craeado y si coincide con la base de datos el usuario puede acceder a la aplicación.
+
+Una vez hecho este login el usuario recibe un token de autenticación que le permite comprar peliculas, este token se genera con **JWT** y persiste hasta que el usuario finaliza la sesión.
+
+
 
 
