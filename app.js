@@ -27,5 +27,3 @@ app.use('/rent', rentRoutes)
 
 app.listen(process.env.PORT, () => console.log('Funcionando'))
 console.log(process.env.PORT)
-
-
