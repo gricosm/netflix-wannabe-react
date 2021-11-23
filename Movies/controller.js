@@ -6,8 +6,8 @@ module.exports.searchMovie = async (req, res) => {
     if (req.query) {
         const param = {}
         if (req.query.title) param.title = req.query.title
-        if (req.query.genre) param.genre = req.query.genre
-        if (req.query.actors) param.actors = req.query.actors
+        // if (req.query.genre) param.genre = req.query.genre
+        // if (req.query.actors) param.actors = req.query.actors
         const filter = await dataMovie.find(param);
         res.json({ data: filter })
     } else {

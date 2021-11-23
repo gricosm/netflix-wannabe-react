@@ -9,6 +9,13 @@ module.exports.createRent = async (req, res) => {
     } catch (error) { res.status(400).json({error:"400"}); }
   }
 
+module.exports.searchAllRents = async (req, res) => {
+  try {
+    const searchAll = await rentData.find()
+    res.json({ searchAll })
+  }catch (error){ res.status(400).json({ Mensaje : 'Error'}) }
+}
+
 module.exports.searchRent = async (req, res) => {
     try {
       const searchById = await rentData.find({ idUser: req.query.idUser })

@@ -4,9 +4,9 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
     name:{ type: String, required: true, trim: true, },
-    lastName:{ type: String, required: true },
-    age:{ type: Number, required: true },
-    role:{ type: String, required: true, lowercase: true, },
+    // lastName:{ type: String, required: true },
+    // age:{ type: Number, required: true },
+    // role:{ type: String, required: true, lowercase: true, },
     email:{
         type: String,
         trim: true,
