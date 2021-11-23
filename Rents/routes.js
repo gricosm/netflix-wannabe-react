@@ -4,6 +4,7 @@ const validationJwt = require('../middleware')
 
 router.post ('/', controller.createRent)
 router.get ('/', controller.searchRent)
+router.get ('/all', controller.searchAllRents)
 router.delete ('/', controller.deleteRent)
 
 module.exports = router;
