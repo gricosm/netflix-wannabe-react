@@ -11,7 +11,7 @@ module.exports.createRent = async (req, res) => {
 
 module.exports.searchAllRents = async (req, res) => {
   try {
-    const searchAll = await rentData.find()
+    const searchAll = await rentData.find({})
     res.json({ searchAll })
   }catch (error){ res.status(400).json({ Mensaje : 'Error'}) }
 }
