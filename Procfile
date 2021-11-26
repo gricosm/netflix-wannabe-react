@@ -1,1 +1,1 @@
-web: npm start // web: npm install bcrypt dotenv express jsonwebtoken mongodb mongoose // web: node app.js  
+web: node app.js  
