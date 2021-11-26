@@ -14,7 +14,9 @@ app.use(function(req, res, next) {
 
 app.use(express.json()); 
 
-mongoose.connect('mongodb://localhost:27017/backend_netflix', {
+mongoose.connect('mongodb+srv://cluster0.xu41s.mongodb.net/backend_netflix?retryWrites=true&w=majority', {
+    user:"guille",
+    pass: "guille",
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
